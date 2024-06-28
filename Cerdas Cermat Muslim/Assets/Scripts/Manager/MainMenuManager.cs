@@ -10,6 +10,8 @@ public class MainMenuManager : MonoBehaviour
     public Button buttonCloseNickname;
     public Button buttonStartGame;
     public Button buttonHomeMataPelajaran;
+    public Button buttonQuitGameOk;
+    public Button buttonQuitGameBatal;
 
     public TextMeshProUGUI textNickname;
     public TMP_InputField inputFieldNickname;
@@ -30,8 +32,18 @@ public class MainMenuManager : MonoBehaviour
         buttonCloseNickname.onClick.AddListener(onClickButtonNicknameHide);
         buttonStartGame.onClick.AddListener(onClickButtonStartGame);
         buttonHomeMataPelajaran.onClick.AddListener(onClickButtonHomeMataPelajaran);
+        buttonQuitGameOk.onClick.AddListener(onClickButtonQuitGameOk);
+        buttonQuitGameBatal.onClick.AddListener(onClickButtonQuitGameBatal);
     }
-    
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            animator.SetTrigger("quitGamePanelShow");
+        }
+    }
+
     private void OnInputFieldChanged(string nickname)
     {
         PlayerPrefsManager.instance.SetNickname(nickname);
@@ -56,6 +68,16 @@ public class MainMenuManager : MonoBehaviour
     private void onClickButtonHomeMataPelajaran()
     {
         StartCoroutine(HomeMataPelajaranCoroutine());
+    }
+
+    private void onClickButtonQuitGameOk()
+    {
+        Application.Quit();
+    }
+
+    private void onClickButtonQuitGameBatal()
+    {
+        animator.SetTrigger("quitGamePanelHide");
     }
 
     private IEnumerator StartGameCoroutine()
