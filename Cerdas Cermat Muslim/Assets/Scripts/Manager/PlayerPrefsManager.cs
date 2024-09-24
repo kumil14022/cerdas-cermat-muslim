@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
@@ -21,5 +19,31 @@ public class PlayerPrefsManager : MonoBehaviour
     public void SetNickname(string nickname)
     {
         PlayerPrefs.SetString("Nickname", nickname);
+    }
+
+    public int GetNyawa()
+    {
+        return PlayerPrefs.GetInt("Nyawa", 10);
+    }
+
+    public void SetNyawa(int nyawa)
+    {
+        PlayerPrefs.SetInt("Nyawa", nyawa);
+    }
+
+    public void SetLevel(string mapel, int level, int soal)
+    {
+        PlayerPrefs.SetInt(mapel + "_Level", level);
+        PlayerPrefs.SetInt(mapel + "_Level_" + level + "_Soal", soal);
+    }
+
+    public int GetLevel(string mapel)
+    {
+        return PlayerPrefs.GetInt(mapel + "_Level", 1);
+    }
+
+    public int GetSoal(string mapel, int level)
+    {
+        return PlayerPrefs.GetInt(mapel + "_Level_" + level + "_Soal", 1);
     }
 }

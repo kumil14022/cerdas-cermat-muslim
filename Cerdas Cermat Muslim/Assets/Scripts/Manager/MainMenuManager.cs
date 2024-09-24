@@ -6,34 +6,55 @@ using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public Button buttonNickname;
-    public Button buttonCloseNickname;
-    public Button buttonStartGame;
-    public Button buttonHomeMataPelajaran;
-    public Button buttonQuitGameOk;
-    public Button buttonQuitGameBatal;
+    [SerializeField]
+    private Button buttonNickname;
+    [SerializeField]
+    private Button buttonCloseNickname;
+    [SerializeField]
+    private Button buttonStartGame;
+    [SerializeField]
+    private Button buttonHomeMataPelajaran;
+    [SerializeField]
+    private Button buttonHomeLevel;
+    [SerializeField]
+    private Button buttonQuitGameOk;
+    [SerializeField]
+    private Button buttonQuitGameBatal;
 
-    public TextMeshProUGUI textNickname;
-    public TMP_InputField inputFieldNickname;
+    [SerializeField]
+    private TextMeshProUGUI textNickname;
+    [SerializeField]
+    private TMP_InputField inputFieldNickname;
 
-    public AudioSource subMenu;
+    [SerializeField]
+    private AudioSource subMenu;
 
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
+    private CanvasGroup mataPelajaranPanel;
+
+    [SerializeField]
+    private CanvasGroup levelPanel;
+
     // Start is called before the first frame update
     void Start()
     {
+        HideAnotherPanel(mataPelajaranPanel);
+        HideAnotherPanel(levelPanel);
+
         textNickname.text = PlayerPrefsManager.instance.GetNickname();
         inputFieldNickname.text = PlayerPrefsManager.instance.GetNickname();
         inputFieldNickname.onValueChanged.AddListener(OnInputFieldChanged);
 
-        buttonNickname.onClick.AddListener(onClickButtonNicknameShow);
-        buttonCloseNickname.onClick.AddListener(onClickButtonNicknameHide);
-        buttonStartGame.onClick.AddListener(onClickButtonStartGame);
-        buttonHomeMataPelajaran.onClick.AddListener(onClickButtonHomeMataPelajaran);
-        buttonQuitGameOk.onClick.AddListener(onClickButtonQuitGameOk);
-        buttonQuitGameBatal.onClick.AddListener(onClickButtonQuitGameBatal);
+        buttonNickname.onClick.AddListener(OnClickButtonNicknameShow);
+        buttonCloseNickname.onClick.AddListener(OnClickButtonNicknameHide);
+        buttonStartGame.onClick.AddListener(OnClickButtonStartGame);
+        buttonHomeMataPelajaran.onClick.AddListener(OnClickButtonHomeMataPelajaran);
+        buttonHomeLevel.onClick.AddListener(OnClickButtonHomeLevel);
+        buttonQuitGameOk.onClick.AddListener(OnClickButtonQuitGameOk);
+        buttonQuitGameBatal.onClick.AddListener(OnClickButtonQuitGameBatal);
     }
 
     void Update()
@@ -44,38 +65,50 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    private void HideAnotherPanel(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+    }
+
     private void OnInputFieldChanged(string nickname)
     {
         PlayerPrefsManager.instance.SetNickname(nickname);
         textNickname.text = PlayerPrefsManager.instance.GetNickname();
     }
 
-    private void onClickButtonNicknameShow()
+    private void OnClickButtonNicknameShow()
     {
         animator.SetTrigger("nicknameShow");
     }
 
-    private void onClickButtonNicknameHide()
+    private void OnClickButtonNicknameHide()
     {
         animator.SetTrigger("nicknameHide");
     }
 
-    private void onClickButtonStartGame()
+    private void OnClickButtonStartGame()
     {
         StartCoroutine(StartGameCoroutine());
     }
 
-    private void onClickButtonHomeMataPelajaran()
+    private void OnClickButtonHomeMataPelajaran()
     {
         StartCoroutine(HomeMataPelajaranCoroutine());
     }
 
-    private void onClickButtonQuitGameOk()
+    private void OnClickButtonHomeLevel()
+    {
+        StartCoroutine(HomeLevelCoroutine());
+    }
+
+    private void OnClickButtonQuitGameOk()
     {
         Application.Quit();
     }
 
-    private void onClickButtonQuitGameBatal()
+    private void OnClickButtonQuitGameBatal()
     {
         animator.SetTrigger("quitGamePanelHide");
     }
@@ -93,6 +126,12 @@ public class MainMenuManager : MonoBehaviour
         animator.SetTrigger("mataPelajaranHide");
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("mainMenuShow");
-    } 
+    }
 
+    private IEnumerator HomeLevelCoroutine()
+    {
+        animator.SetTrigger("LevelHide");
+        yield return new WaitForSeconds(1f);
+        animator.SetTrigger("mataPelajaranShow");
+    }
 }
