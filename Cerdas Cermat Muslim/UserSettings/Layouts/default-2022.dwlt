@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 97
+  controlID: 101
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -193,8 +193,8 @@ MonoBehaviour:
     y: 312.8
     width: 628.8
     height: 410
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 13}
@@ -358,24 +358,24 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 17.200012}
-      m_SelectedIDs: 1a780000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 82520000
       m_LastClickedID: 0
-      m_ExpandedIDs: 18fbffff365300004a530000bc530000e45300001c540000
+      m_ExpandedIDs: 18fbffff4a5300005e530000d0530000f8530000145400003054000092540000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Header
+        m_OriginalName: Header
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 21650
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -430,7 +430,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scriptable Objects/Mata Pelajaran
+    - Assets/Scriptable Objects/Mata Pelajaran/Al-Qur'an Hadist
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scriptable Objects/Mata Pelajaran
+  - Assets/Scriptable Objects/Mata Pelajaran/Al-Qur'an Hadist
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\USER\Documents\Unity Projects\cerdas-cermat-muslim\Cerdas
     Cermat Muslim
@@ -446,23 +446,23 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 8e750000
-    m_LastClickedID: 30094
-    m_ExpandedIDs: 00000000b6550000c4550000c65500008e7500001a7800002a7800002e7800000e8b000000ca9a3bffffff7f
+    m_SelectedIDs: 10670000
+    m_LastClickedID: 26384
+    m_ExpandedIDs: 00000000c8550000d4550000d8550000da55000012670000166700002067000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Soal
-      m_OriginalName: Soal
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 35606
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -476,7 +476,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a8520000
     m_LastClickedID: 21160
-    m_ExpandedIDs: 00000000b6550000
+    m_ExpandedIDs: 00000000c8550000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -501,10 +501,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 1a780000
-    m_LastClickedInstanceID: 30746
+    m_SelectedInstanceIDs: 82520000
+    m_LastClickedInstanceID: 21122
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300003e520000000000004e520000045300003a540000265400008a640000
+    m_ExpandedInstanceIDs: c62300003e520000000000004e520000045300003a540000265400008a6400001e55000098550000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -588,7 +588,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 386.4
-    width: 701.4
+    width: 627.8
     height: 389
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 21532
+  m_LastSelectedObjectID: 21424
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -667,7 +667,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -693,7 +693,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -972,9 +972,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 471.5447, y: 1137.6097, z: -1.7001717}
+    m_Target: {x: 398.23953, y: 1371.1536, z: -0.8979939}
     speed: 2
-    m_Value: {x: 471.5447, y: 1137.6097, z: -1.7001717}
+    m_Value: {x: 398.23953, y: 1371.1536, z: -0.8979939}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1024,9 +1024,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 795.61536
+    m_Target: 715.3976
     speed: 2
-    m_Value: 795.61536
+    m_Value: 715.3976
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1155,7 +1155,8 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
-  m_ObjectsLockedBeforeSerialization: []
+  m_ObjectsLockedBeforeSerialization:
+  - {fileID: 11400000, guid: d7d36009285b67d4c80394a7c7ab900b, type: 2}
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
     m_CachedPref: -160
@@ -1166,5 +1167,5 @@ MonoBehaviour:
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
-    m_IsLocked: 0
+    m_IsLocked: 1
   m_PreviewWindow: {fileID: 0}

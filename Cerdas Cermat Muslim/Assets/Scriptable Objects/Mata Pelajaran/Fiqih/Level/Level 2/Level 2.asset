@@ -15,5 +15,3 @@ MonoBehaviour:
   levelTo: 2
   soals:
   - {fileID: 11400000, guid: 1fe6921fe580fe34eb5f1215d7f5171b, type: 2}
-  - {fileID: 11400000, guid: 106f072e71ba4ac439d2ea87cf6a4b84, type: 2}
-  - {fileID: 11400000, guid: a10bf62db29719045aa7ef2a4ae5b631, type: 2}

@@ -27,9 +27,30 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private MataPelajaranSO SejarahKebudayaanIslamSO;
 
+    [SerializeField]
+    private GameObject levelList;
+
+    [SerializeField]
+    private GameObject buttonLevelPrefabs;
+
     private int lengthLevel = 1;
     
+    private int selectedLevelIndex = 1;
+    
     private int currentLevelIndex = 1;
+
+    private int currentSoalIndex = 1;
+
+    private int lengthSoal = 0;
+
+    private string selectedMapelLevel = "Fiqih";
+
+    [SerializeField]
+    private Sprite lockImageButton;
+    [SerializeField]
+    private Sprite currentImageButton;
+    [SerializeField]
+    private Sprite completedImageButton;
 
     // Start is called before the first frame update
     void Start()
@@ -61,9 +82,13 @@ public class LevelManager : MonoBehaviour
         {
             lengthLevel = SejarahKebudayaanIslamSO.levels.Length;
         }
-        
-        // Reset current level to the one stored in PlayerPrefs
+
+        selectedMapelLevel = selectedMapel;
+    
         currentLevelIndex = PlayerPrefsManager.instance.GetLevel(selectedMapel);
+
+        selectedLevelIndex = currentLevelIndex;
+
 
         // Update the UI
         UpdateLevelUI();
@@ -72,19 +97,91 @@ public class LevelManager : MonoBehaviour
     // Update the displayed level
     void UpdateLevelUI()
     {
-        levelToText.text = $"Level {currentLevelIndex}";
+        // Clear any existing buttons
+        foreach (Transform child in levelList.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Tentukan jumlah level berdasarkan openMapel yang baru
+        if (selectedMapelLevel == "Fiqih")
+        {
+            lengthSoal = FiqihSO.levels[selectedLevelIndex-1].soals.Length;
+        }
+        else if (selectedMapelLevel == "Al-Qur'an Hadist")
+        {
+            lengthSoal = AlquranHadistSO.levels[selectedLevelIndex-1].soals.Length;
+        }
+        else if (selectedMapelLevel == "Akidah Akhlak")
+        {
+            lengthSoal = AkidahAkhlakSO.levels[selectedLevelIndex-1].soals.Length;
+        }
+        else if (selectedMapelLevel == "Sejarah Kebudayaan Islam")
+        {
+            lengthSoal = SejarahKebudayaanIslamSO.levels[selectedLevelIndex-1].soals.Length;
+        }
+
+        levelToText.text = $"Level {selectedLevelIndex}";
 
         // Disable left button if at the first level, and right button if at the last level
-        leftLevelButton.interactable = currentLevelIndex > 1;
-        rightLevelButton.interactable = currentLevelIndex < lengthLevel;
+        leftLevelButton.interactable = selectedLevelIndex > 1;
+        rightLevelButton.interactable = selectedLevelIndex < lengthLevel;
+        
+        // Instantiate level buttons dynamically
+        for (int i = 1; i <= lengthSoal; i++)
+        {
+            GameObject levelButton = Instantiate(buttonLevelPrefabs, levelList.transform);
+            ButtonLevel buttonLevel = levelButton.GetComponent<ButtonLevel>();
+
+            // Set the button text to the level number
+            buttonLevel.numberLevelText.text = $"{i}";
+            buttonLevel.buttonImage.sprite = completedImageButton;
+
+            int levelIndex = i;
+            buttonLevel.buttonLevel.onClick.AddListener(() => OnLevelButtonClicked(levelIndex));
+
+            currentSoalIndex = PlayerPrefsManager.instance.GetSoal(selectedMapelLevel, selectedLevelIndex);
+            if (selectedLevelIndex == 1) {
+                currentSoalIndex = 1;
+                PlayerPrefsManager.instance.SetSoal(selectedMapelLevel, selectedLevelIndex, currentSoalIndex);
+            }
+
+            // jika semua soal di level 1 selesai, buka soal 1 pada level berikutnya
+            if (i == lengthSoal && currentSoalIndex == lengthSoal)
+            {
+                if (selectedLevelIndex < lengthLevel)
+                {
+                    PlayerPrefsManager.instance.SetSoal(selectedMapelLevel, selectedLevelIndex + 1, 1);
+                }
+            }
+
+            if (i == currentSoalIndex)
+            {
+                buttonLevel.buttonImage.sprite = currentImageButton;
+            }
+            else if (i > currentSoalIndex || currentSoalIndex == 0)
+            {
+                buttonLevel.numberLevelText.text = " ";
+                buttonLevel.buttonImage.sprite = lockImageButton;
+                buttonLevel.buttonLevel.interactable = false;
+            } else
+            {
+                buttonLevel.buttonImage.sprite = completedImageButton;
+            }
+        }
+    }
+    
+    void OnLevelButtonClicked(int levelIndex)
+    {
+        Debug.Log("level: " + levelIndex);
     }
 
     // Go to the previous level
     void GoToPreviousLevel()
     {
-        if (currentLevelIndex > 1)
+        if (selectedLevelIndex > 1)
         {
-            currentLevelIndex--;
+            selectedLevelIndex--;
             UpdateLevelUI();
         }
     }
@@ -92,9 +189,9 @@ public class LevelManager : MonoBehaviour
     // Go to the next level
     void GoToNextLevel()
     {
-        if (currentLevelIndex < lengthLevel)
+        if (selectedLevelIndex < lengthLevel)
         {
-            currentLevelIndex++;
+            selectedLevelIndex++;
             UpdateLevelUI();
         }
     }

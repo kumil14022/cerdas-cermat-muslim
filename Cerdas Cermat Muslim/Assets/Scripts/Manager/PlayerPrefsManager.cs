@@ -42,8 +42,15 @@ public class PlayerPrefsManager : MonoBehaviour
         return PlayerPrefs.GetInt(mapel + "_Level", 1);
     }
 
+    public void SetSoal(string mapel, int level, int soal)
+    {
+        PlayerPrefs.SetInt(mapel + "_Level_" + level + "_Soal", soal);
+    }
+
     public int GetSoal(string mapel, int level)
     {
-        return PlayerPrefs.GetInt(mapel + "_Level_" + level + "_Soal", 1);
+        return PlayerPrefs.GetInt(mapel + "_Level_" + level + "_Soal", 0);
     }
+
+    
 }
