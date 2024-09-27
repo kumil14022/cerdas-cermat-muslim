@@ -15,23 +15,22 @@ public class LevelManager : MonoBehaviour
     [SerializeField] 
     private Button rightLevelButton;
 
-    [SerializeField]
-    private MataPelajaranSO FiqihSO;
+    public MataPelajaranSO FiqihSO;
 
-    [SerializeField]
-    private MataPelajaranSO AlquranHadistSO;
+    public MataPelajaranSO AlquranHadistSO;
 
-    [SerializeField]
-    private MataPelajaranSO AkidahAkhlakSO;
+    public MataPelajaranSO AkidahAkhlakSO;
 
-    [SerializeField]
-    private MataPelajaranSO SejarahKebudayaanIslamSO;
+    public MataPelajaranSO SejarahKebudayaanIslamSO;
 
     [SerializeField]
     private GameObject levelList;
 
     [SerializeField]
     private GameObject buttonLevelPrefabs;
+
+    [SerializeField]
+    private Animator animator;
 
     private int lengthLevel = 1;
     
@@ -51,6 +50,9 @@ public class LevelManager : MonoBehaviour
     private Sprite currentImageButton;
     [SerializeField]
     private Sprite completedImageButton;
+
+    [SerializeField]
+    private SoalManager soalManager;
 
     // Start is called before the first frame update
     void Start()
@@ -137,8 +139,8 @@ public class LevelManager : MonoBehaviour
             buttonLevel.numberLevelText.text = $"{i}";
             buttonLevel.buttonImage.sprite = completedImageButton;
 
-            int levelIndex = i;
-            buttonLevel.buttonLevel.onClick.AddListener(() => OnLevelButtonClicked(levelIndex));
+            int soalIndex = i;
+            buttonLevel.buttonLevel.onClick.AddListener(() => OnLevelButtonClicked(selectedMapelLevel, selectedLevelIndex, soalIndex, lengthSoal));
 
             currentSoalIndex = PlayerPrefsManager.instance.GetSoal(selectedMapelLevel, selectedLevelIndex);
             if (selectedLevelIndex == 1) {
@@ -170,10 +172,51 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    
-    void OnLevelButtonClicked(int levelIndex)
+
+    void OnLevelButtonClicked(string mapel, int levelIndex, int soalIndex, int lengthSoal)
     {
-        Debug.Log("level: " + levelIndex);
+        soalManager.mapel = mapel;
+        soalManager.levelIndex = levelIndex;
+        soalManager.soalIndex = soalIndex;
+        soalManager.lengthSoal = lengthSoal;
+
+        // Trigger the animation
+        animator.SetTrigger("soalShow");
+        soalManager.levelText.text = $"Level {soalIndex}";
+        soalManager.numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
+        if (mapel == "Fiqih")
+        {
+            soalManager.pertanyaanText.text = FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+            soalManager.buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+            soalManager.buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+            soalManager.buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+            soalManager.buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
+        }
+        else if (mapel == "Al-Qur'an Hadist")
+        {
+            soalManager.pertanyaanText.text = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+            soalManager.buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+            soalManager.buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+            soalManager.buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+            soalManager.buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
+        }
+        else if (mapel == "Akidah Akhlak")
+        {
+            soalManager.pertanyaanText.text = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+            soalManager.buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+            soalManager.buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+            soalManager.buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+            soalManager.buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
+        }
+        else if (mapel == "Sejarah Kebudayaan Islam")
+        {
+            soalManager.pertanyaanText.text = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+            soalManager.buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+            soalManager.buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+            soalManager.buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+            soalManager.buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
+        }
+        
     }
 
     // Go to the previous level

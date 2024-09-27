@@ -130,7 +130,7 @@ public class MainMenuManager : MonoBehaviour
 
     private IEnumerator HomeLevelCoroutine()
     {
-        animator.SetTrigger("LevelHide");
+        animator.SetTrigger("levelHide");
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("mataPelajaranShow");
     }
