@@ -5,8 +5,7 @@ public class GetNyawa : MonoBehaviour
 {
     private TextMeshProUGUI nyawaText;
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
         nyawaText = GetComponent<TextMeshProUGUI>();
         nyawaText.text = "x" + PlayerPrefsManager.instance.GetNyawa();

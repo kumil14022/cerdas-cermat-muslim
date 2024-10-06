@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class SoalManager : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class SoalManager : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    private int currentNyawa = 0;
+
+    private int nextSoalIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,17 +53,29 @@ public class SoalManager : MonoBehaviour
             if (levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.jawabanBenarIndex == pilihan)
             {
                 animator.SetTrigger("jawabanBenarShow");
-                if (soalIndex == lengthSoal)
+                StartCoroutine(HideJawabanBenarCoroutine());
+
+                nextSoalIndex = soalIndex + 1;
+                // contoh get = 1, next = 2 set = 2
+                if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < nextSoalIndex)
                 {
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, nextSoalIndex);
+                }
+
+                // jika soal terakhir
+                if (nextSoalIndex == lengthSoal)
+                {
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex + 1, 1);
                 }
             }
             else
             {
                 animator.SetTrigger("jawabanSalahShow");
-                int currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                currentNyawa = PlayerPrefsManager.instance.GetNyawa();
                 if (currentNyawa > 0)
                 {
                     PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);
+                    StartCoroutine(HideJawabanSalahCoroutine());
                 } 
                 else
                 {
@@ -76,5 +93,21 @@ public class SoalManager : MonoBehaviour
         else if (mapel == "Sejarah Kebudayaan Islam")
         {
         }
+    }
+
+    IEnumerator HideJawabanBenarCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("jawabanBenarHide");
+        yield return new WaitForSeconds(0.25f);
+        animator.SetTrigger("soalShow");
+    }
+
+    IEnumerator HideJawabanSalahCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("jawabanSalahHide");
+        yield return new WaitForSeconds(0.25f);
+        animator.SetTrigger("soalShow");
     }
 }

@@ -17,6 +17,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private Button buttonHomeLevel;
     [SerializeField]
+    private Button buttonHomeSoal;
+    [SerializeField]
     private Button buttonQuitGameOk;
     [SerializeField]
     private Button buttonQuitGameBatal;
@@ -53,6 +55,7 @@ public class MainMenuManager : MonoBehaviour
         buttonStartGame.onClick.AddListener(OnClickButtonStartGame);
         buttonHomeMataPelajaran.onClick.AddListener(OnClickButtonHomeMataPelajaran);
         buttonHomeLevel.onClick.AddListener(OnClickButtonHomeLevel);
+        buttonHomeSoal.onClick.AddListener(OnClickButtonHomeSoal);
         buttonQuitGameOk.onClick.AddListener(OnClickButtonQuitGameOk);
         buttonQuitGameBatal.onClick.AddListener(OnClickButtonQuitGameBatal);
     }
@@ -103,6 +106,11 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(HomeLevelCoroutine());
     }
 
+    private void OnClickButtonHomeSoal()
+    {
+        StartCoroutine(HomeSoalCoroutine());
+    }
+
     private void OnClickButtonQuitGameOk()
     {
         Application.Quit();
@@ -133,5 +141,12 @@ public class MainMenuManager : MonoBehaviour
         animator.SetTrigger("levelHide");
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("mataPelajaranShow");
+    }
+
+    private IEnumerator HomeSoalCoroutine()
+    {
+        animator.SetTrigger("soalHide");
+        yield return new WaitForSeconds(1f);
+        animator.SetTrigger("levelShow");
     }
 }
