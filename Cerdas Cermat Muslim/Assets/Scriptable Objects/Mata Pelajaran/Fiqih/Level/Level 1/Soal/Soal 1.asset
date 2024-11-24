@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Soal 1
   m_EditorClassIdentifier: 
   soal:
+    soalVideo: {fileID: 0}
+    soalImage: {fileID: 0}
     soalText: Ada berapakah rukun Islam?
     pilihan:
     - 6

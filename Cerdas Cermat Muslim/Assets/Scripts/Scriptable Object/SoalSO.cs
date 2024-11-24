@@ -1,12 +1,20 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 [System.Serializable]
 public class Soal
 {
+    [Header("Media Soal")]
+    public VideoClip soalVideo;   // Input video soal
+    public Sprite soalImage;      // Gambar soal (opsional)
+
+    [Header("Pertanyaan")]
     [TextArea(3, 10)]
-    public string soalText;
-    public string[] pilihan = new string[4];
-    public int jawabanBenarIndex;  // Index jawaban yang benar (0-3)
+    public string soalText;       // Teks pertanyaan soal
+
+    [Header("Pilihan Jawaban")]
+    public string[] pilihan = new string[4]; // Empat pilihan jawaban
+    public int jawabanBenarIndex;            // Index jawaban benar (0-3)
 }
 
 [CreateAssetMenu(fileName = "Soal Baru", menuName = "ScriptableObjects/Soal", order = 2)]
