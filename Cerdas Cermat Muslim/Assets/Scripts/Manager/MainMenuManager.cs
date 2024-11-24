@@ -40,6 +40,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup levelPanel;
 
+    [SerializeField]
+    private LevelManager levelManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,16 +101,19 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnClickButtonHomeMataPelajaran()
     {
+        levelManager.UpdateLevelUI();
         StartCoroutine(HomeMataPelajaranCoroutine());
     }
 
     private void OnClickButtonHomeLevel()
     {
+        levelManager.UpdateLevelUI();
         StartCoroutine(HomeLevelCoroutine());
     }
 
     private void OnClickButtonHomeSoal()
     {
+        levelManager.UpdateLevelUI();
         StartCoroutine(HomeSoalCoroutine());
     }
 

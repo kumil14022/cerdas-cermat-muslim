@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Soal 3
   m_EditorClassIdentifier: 
   soal:
-    soalText: Bolehkah seseorang melakukan tayamum jika masih ada air, tetapi ia
-      sakit dan tidak bisa menggunakan air?
+    soalText: Persaksian bahwa tiada tuhan selain ALLAH SWT disebut Syahadat?
     pilihan:
-    - Tidak boleh
-    - Boleh
-    - Hanya jika tidak ada air
-    - Hanya jika ada izin
-    jawabanBenarIndex: 1
+    - Tauhid
+    - Rasul
+    - Nabi
+    - Malaikat
+    jawabanBenarIndex: 0

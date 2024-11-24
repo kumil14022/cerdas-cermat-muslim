@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Soal 2
   m_EditorClassIdentifier: 
   soal:
-    soalText: Rukun wudhu yang pertama adalah?
+    soalText: Manakah Susunan Rukun islam yang benar?
     pilihan:
-    - Membasuh tangan
-    - Membasuh muka
-    - Niat
-    - Membasuh kaki
-    jawabanBenarIndex: 2
+    - Syahadat, Shalat, Zakat, Haji, Puasa
+    - Syahadat, zakat, Shalat, Puasa, Haji
+    - Syahadat, Haji, Puasa, Zakat, Shalat
+    - Syahadat, Shalat, Zakat, Puasa, Haji
+    jawabanBenarIndex: 0

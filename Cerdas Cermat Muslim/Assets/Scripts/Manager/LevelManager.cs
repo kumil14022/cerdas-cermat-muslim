@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
     }
 
     // Update the displayed level
-    void UpdateLevelUI()
+    public void UpdateLevelUI()
     {
         // Clear any existing buttons
         foreach (Transform child in levelList.transform)
@@ -143,10 +143,6 @@ public class LevelManager : MonoBehaviour
             buttonLevel.buttonLevel.onClick.AddListener(() => OnLevelButtonClicked(selectedMapelLevel, selectedLevelIndex, soalIndex, lengthSoal));
 
             currentSoalIndex = PlayerPrefsManager.instance.GetSoal(selectedMapelLevel, selectedLevelIndex);
-            if (selectedLevelIndex == 1) {
-                currentSoalIndex = 1;
-                PlayerPrefsManager.instance.SetSoal(selectedMapelLevel, selectedLevelIndex, currentSoalIndex);
-            }
 
             // jika semua soal di level 1 selesai, buka soal 1 pada level berikutnya
             if (i == lengthSoal && currentSoalIndex == lengthSoal)

@@ -50,6 +50,7 @@ public class SoalManager : MonoBehaviour
     {
         if (mapel == "Fiqih")
         {
+            // jawaban benar
             if (levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.jawabanBenarIndex == pilihan)
             {
                 animator.SetTrigger("jawabanBenarShow");
@@ -67,6 +68,17 @@ public class SoalManager : MonoBehaviour
                 {
                     PlayerPrefsManager.instance.SetSoal(mapel, levelIndex + 1, 1);
                 }
+
+                soalIndex = PlayerPrefsManager.instance.GetSoal(mapel, levelIndex);
+
+                levelText.text = $"Level {soalIndex}";
+                numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
+
+                pertanyaanText.text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+                buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+                buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+                buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+                buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
             }
             else
             {
@@ -93,6 +105,8 @@ public class SoalManager : MonoBehaviour
         else if (mapel == "Sejarah Kebudayaan Islam")
         {
         }
+
+        levelManager.UpdateLevelUI();
     }
 
     IEnumerator HideJawabanBenarCoroutine()
@@ -101,6 +115,7 @@ public class SoalManager : MonoBehaviour
         animator.SetTrigger("jawabanBenarHide");
         yield return new WaitForSeconds(0.25f);
         animator.SetTrigger("soalShow");
+        // Update the UI
     }
 
     IEnumerator HideJawabanSalahCoroutine()

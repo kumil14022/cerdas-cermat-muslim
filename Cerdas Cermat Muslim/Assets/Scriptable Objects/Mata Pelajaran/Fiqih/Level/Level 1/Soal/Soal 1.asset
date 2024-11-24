@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Soal 1
   m_EditorClassIdentifier: 
   soal:
-    soalText: Apa yang dimaksud dengan tayamum?
+    soalText: Ada berapakah rukun Islam?
     pilihan:
-    - Wudhu menggunakan air
-    - 'Bersuci dengan tanah atau debu '
-    - Mandi wajib
-    - Membersihkan diri dari najis
-    jawabanBenarIndex: 1
+    - 6
+    - 4
+    - 5
+    - 7
+    jawabanBenarIndex: 2

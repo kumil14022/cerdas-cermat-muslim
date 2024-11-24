@@ -3964,6 +3964,7 @@ MonoBehaviour:
   animator: {fileID: 855058885}
   mataPelajaranPanel: {fileID: 207946537}
   levelPanel: {fileID: 1524406295}
+  levelManager: {fileID: 1524406299}
 --- !u!4 &806640941
 Transform:
   m_ObjectHideFlags: 0
