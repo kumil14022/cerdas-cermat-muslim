@@ -15,3 +15,20 @@ MonoBehaviour:
   levelTo: 2
   soals:
   - {fileID: 11400000, guid: 1fe6921fe580fe34eb5f1215d7f5171b, type: 2}
+  - {fileID: 11400000, guid: a971bef3c17b90345a4259d646418a36, type: 2}
+  - {fileID: 11400000, guid: 263417768ac7b434494a2f5ecfc88bab, type: 2}
+  - {fileID: 11400000, guid: 1e93469416337f342810f1337ece533b, type: 2}
+  - {fileID: 11400000, guid: e3d71a64cd46e5e4e9836173d8d5d2f7, type: 2}
+  - {fileID: 11400000, guid: 99d0addfe8cbe8c488f5052fdfc622c0, type: 2}
+  - {fileID: 11400000, guid: 8ba3f138ed6dcca46aa3a775c2f01d8c, type: 2}
+  - {fileID: 11400000, guid: 11a24a0aa39b63e47a627c585238f4f4, type: 2}
+  - {fileID: 11400000, guid: a0727f8c721329b4c91d28864a8caec7, type: 2}
+  - {fileID: 11400000, guid: 2cff2d832783a924c85042b34f6c13e0, type: 2}
+  - {fileID: 11400000, guid: ab07e9d5f969ab342bed4620bba7c0a8, type: 2}
+  - {fileID: 11400000, guid: 9e60e27800871314f92cef30464278af, type: 2}
+  - {fileID: 11400000, guid: 494c0906e9667e04f88309c9725dd423, type: 2}
+  - {fileID: 11400000, guid: 6b3f2a1cccb0954429f09d067c9a6689, type: 2}
+  - {fileID: 11400000, guid: 49077f85f001da04e869e4fecd57d882, type: 2}
+  - {fileID: 11400000, guid: da40e4fee4bfdb94b9451a83d4fd3313, type: 2}
+  - {fileID: 11400000, guid: bb3451eef196e8a439a7557b8158cd31, type: 2}
+  - {fileID: 11400000, guid: 08aafa9f1e3f04042a1e88c2d279f14e, type: 2}

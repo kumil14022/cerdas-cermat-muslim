@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ece39b3f490744429eda235184bdbbe, type: 3}
+  m_Name: Soal 18
+  m_EditorClassIdentifier: 
+  soal:
+    soalAudio: {fileID: 0}
+    soalVideo: {fileID: 0}
+    soalImage: {fileID: 0}
+    soalText: "Perhatikan pernyataan dibawah ini :\r\n\t1. Suci badan dari hadas
+      dan najis\r\n\t2. Menutup aurat dengan pakaian yang suci\r\n\t3. Berada di
+      tempat yang suci/masjid\r\n\t4. Telah masuk waktunya\r\n\t5. Menghadap kiblat\t\r\ndari
+      pernyataan diatas, ini merupakan syarat sah?\r"
+    pilihan:
+    - Zakat
+    - Sedekah
+    - Puasa
+    - Sholat
+    jawabanBenarIndex: 3

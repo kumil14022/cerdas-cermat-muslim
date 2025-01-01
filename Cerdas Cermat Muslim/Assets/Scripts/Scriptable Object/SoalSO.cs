@@ -5,6 +5,7 @@ using UnityEngine.Video;
 public class Soal
 {
     [Header("Media Soal")]
+    public AudioClip soalAudio;   // Input audio soal
     public VideoClip soalVideo;   // Input video soal
     public Sprite soalImage;      // Gambar soal (opsional)
 

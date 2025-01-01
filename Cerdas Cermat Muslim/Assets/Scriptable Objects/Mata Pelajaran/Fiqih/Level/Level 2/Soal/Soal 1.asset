@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: Soal 1
   m_EditorClassIdentifier: 
   soal:
-    soalText: Apa yang dimaksud dengan thaharah dalam fiqih?
+    soalAudio: {fileID: 0}
+    soalVideo: {fileID: 0}
+    soalImage: {fileID: 21300000, guid: 68f55763ca0fd9c49a9f824d76e42726, type: 3}
+    soalText: 'Sumber : Modul KMA
+
+      Apa yang sedang ia lakukan?'
     pilihan:
-    - Kebersihan hati
-    - Kebersihan pakaian
-    - Kebersihan jasmani dari najis
-    - Kebersihan rumah
-    jawabanBenarIndex: 2
+    - Menyanyikan lagu
+    - Mengumandangkan adzan
+    - Memberikan ceramah
+    - Beribadah dengan hening
+    jawabanBenarIndex: 1

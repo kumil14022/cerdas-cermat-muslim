@@ -178,6 +178,7 @@ public class LevelManager : MonoBehaviour
 
         // Trigger the animation
         animator.SetTrigger("soalShow");
+        animator.SetTrigger("levelHide");
         soalManager.levelText.text = $"Level {soalIndex}";
         soalManager.numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
         if (mapel == "Fiqih")

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ece39b3f490744429eda235184bdbbe, type: 3}
+  m_Name: Soal 13
+  m_EditorClassIdentifier: 
+  soal:
+    soalAudio: {fileID: 0}
+    soalVideo: {fileID: 32900000, guid: b0eebc11efbe13c4f9e22cdfa7ed344c, type: 3}
+    soalImage: {fileID: 0}
+    soalText: Dari vidio di atas, menurut kamu bagaimana hukum sholatnya?
+    pilihan:
+    - Makruh
+    - Tidak sah/batal
+    - Sah
+    - Mubah
+    jawabanBenarIndex: 1

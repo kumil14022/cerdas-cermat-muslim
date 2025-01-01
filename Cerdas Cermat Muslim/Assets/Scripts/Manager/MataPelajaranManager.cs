@@ -33,6 +33,7 @@ public class MataPelajaranManager : MonoBehaviour
     {
         // Trigger the animation
         animator.SetTrigger("levelShow");
+        animator.SetTrigger("mataPelajaranHide");
 
         UpdatePanelLevel(levelName);
     }

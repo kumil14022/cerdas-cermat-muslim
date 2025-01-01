@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Soal 3
   m_EditorClassIdentifier: 
   soal:
-    soalText: Bolehkah seseorang melakukan tayamum jika masih ada air, tetapi ia
-      sakit dan tidak bisa menggunakan air?
+    soalAudio: {fileID: 8300000, guid: 2cf680860163be74ebc9286fbddbb455, type: 3}
+    soalVideo: {fileID: 0}
+    soalImage: {fileID: 0}
+    soalText: Ini merupakan lafadz dari?
     pilihan:
-    - Tidak boleh
-    - Boleh
-    - Hanya jika tidak ada air
-    - Hanya jika ada izin
+    - Doa harian
+    - Panggilan untuk sholat
+    - "Surat dalam Al-Qur\u2019an"
+    - Nyanyian religius
     jawabanBenarIndex: 1

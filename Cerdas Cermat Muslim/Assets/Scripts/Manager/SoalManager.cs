@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.Video;
 
 public class SoalManager : MonoBehaviour
 {
+    public Texture videoSoalTexture;
+    public RawImage screen;
+    public VideoPlayer videoPlayer;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI numberSoalText;
     public TextMeshProUGUI pertanyaanText;
@@ -64,14 +68,15 @@ public class SoalManager : MonoBehaviour
                 }
 
                 // jika soal terakhir
-                if (nextSoalIndex == lengthSoal)
+                if (nextSoalIndex >= lengthSoal)
                 {
-                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex + 1, 1);
+                    levelIndex++;
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
                 }
 
                 soalIndex = PlayerPrefsManager.instance.GetSoal(mapel, levelIndex);
 
-                levelText.text = $"Level {soalIndex}";
+                levelText.text = $"Level {levelIndex}";
                 numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
 
                 pertanyaanText.text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
@@ -93,6 +98,13 @@ public class SoalManager : MonoBehaviour
                 {
                     // game over
                     // reset soal
+                    PlayerPrefsManager.instance.SetNyawa(10);
+                    // dont reset soal if pernah tamat level tsb
+                    if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < lengthSoal)
+                    {
+                        PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+                    }
+                    StartCoroutine(HideSoalShowLevelCoroutine());
                 }
             }
         }
@@ -124,5 +136,16 @@ public class SoalManager : MonoBehaviour
         animator.SetTrigger("jawabanSalahHide");
         yield return new WaitForSeconds(0.25f);
         animator.SetTrigger("soalShow");
+    }
+    IEnumerator HideSoalShowLevelCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("jawabanSalahHide");
+        animator.SetTrigger("soalHide");
+        animator.SetTrigger("gameOverShow");
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("gameOverHide");
+        yield return new WaitForSeconds(0.25f);
+        animator.SetTrigger("levelShow");
     }
 }
