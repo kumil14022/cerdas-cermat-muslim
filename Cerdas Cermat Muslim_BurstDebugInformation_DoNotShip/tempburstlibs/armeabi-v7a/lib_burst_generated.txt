@@ -1,33 +1,17 @@
-Library: C:\Users\MI NURUL HUDA\Documents\Unity Project\cerdas-cermat-muslim\Cerdas Cermat Muslim\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib_burst_generated
+Library: C:\Users\andri\Documents\Unity Projects\cerdas-cermat-muslim\Cerdas Cermat Muslim\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib_burst_generated
 --platform=Android
---backend=burst-llvm-15
+--backend=burst-llvm-16
 --target=ARMV7A_NEON32
 --global-safety-checks-setting=Off
 --meta-data-generation=False
 --dump=Function
 --float-precision=Standard
 --target-framework=NetFramework
---assembly-defines=Assembly-CSharp;
---assembly-defines=Mono.Security;
---assembly-defines=mscorlib;
---assembly-defines=System.Configuration;
---assembly-defines=System.Core;
---assembly-defines=System;
---assembly-defines=System.Xml;
---assembly-defines=Unity.2D.Animation.Runtime;
---assembly-defines=Unity.Burst;
---assembly-defines=Unity.Burst.Unsafe;
---assembly-defines=Unity.Collections;
---assembly-defines=Unity.Collections.LowLevel.ILSupport;
---assembly-defines=Unity.InternalAPIEngineBridge.001;
---assembly-defines=Unity.Mathematics;
---assembly-defines=Unity.TextMeshPro;
---assembly-defines=UnityEngine;
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\MI NURUL HUDA\Documents\Unity Project\cerdas-cermat-muslim\Cerdas Cermat Muslim\Temp\Burst
---key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.8f1/Editor/Data/PlaybackEngines/AndroidPlayer
---decode-folder=C:\Users\MI NURUL HUDA\Documents\Unity Project\cerdas-cermat-muslim\Cerdas Cermat Muslim\Library\Burst
---output=C:\Users\MI NURUL HUDA\Documents\Unity Project\cerdas-cermat-muslim\Cerdas Cermat Muslim\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib_burst_generated
+--temp-folder=C:\Users\andri\Documents\Unity Projects\cerdas-cermat-muslim\Cerdas Cermat Muslim\Temp\Burst
+--key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.53f1/Editor/Data/PlaybackEngines/AndroidPlayer
+--decode-folder=C:\Users\andri\Documents\Unity Projects\cerdas-cermat-muslim\Cerdas Cermat Muslim\Library\Burst
+--output=C:\Users\andri\Documents\Unity Projects\cerdas-cermat-muslim\Cerdas Cermat Muslim\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10

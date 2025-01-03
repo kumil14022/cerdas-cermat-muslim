@@ -6,9 +6,11 @@ using UnityEngine.Video;
 
 public class SoalManager : MonoBehaviour
 {
+    public AudioSource backgroundMusic;
     public Texture videoSoalTexture;
     public RawImage screen;
     public VideoPlayer videoPlayer;
+    public AudioSource audioSoal;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI numberSoalText;
     public TextMeshProUGUI pertanyaanText;
@@ -57,6 +59,7 @@ public class SoalManager : MonoBehaviour
             // jawaban benar
             if (levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.jawabanBenarIndex == pilihan)
             {
+                jawabanBenarPanel.SetActive(true);
                 animator.SetTrigger("jawabanBenarShow");
                 StartCoroutine(HideJawabanBenarCoroutine());
 
@@ -68,16 +71,60 @@ public class SoalManager : MonoBehaviour
                 }
 
                 // jika soal terakhir
-                if (nextSoalIndex >= lengthSoal)
+                if (nextSoalIndex > lengthSoal)
                 {
                     levelIndex++;
                     PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+
+                    // jika level terakhir
+                    if (levelIndex >= levelManager.lengthLevel)
+                    {
+                        StartCoroutine(HideSoalShowLevelCoroutine());
+                    }
                 }
 
                 soalIndex = PlayerPrefsManager.instance.GetSoal(mapel, levelIndex);
 
                 levelText.text = $"Level {levelIndex}";
                 numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
+
+                audioSoal.gameObject.SetActive(false);
+                screen.gameObject.SetActive(false);
+                videoPlayer.gameObject.SetActive(false);
+
+                if (levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo != null)
+                {
+                    backgroundMusic.Pause();
+                    screen.gameObject.SetActive(true);
+                    videoPlayer.gameObject.SetActive(true);
+                    screen.texture = videoSoalTexture;
+                    videoPlayer.clip = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo;
+                }
+                else if (levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+
+                    screen.gameObject.SetActive(true);
+                    screen.texture = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage.texture;
+                    screen.SetNativeSize();
+                }
+                else if (levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio != null)
+                {
+                    backgroundMusic.Pause();
+                    audioSoal.gameObject.SetActive(true);
+                    audioSoal.clip = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio;
+                    audioSoal.Play();
+                }
+                else
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+                }
 
                 pertanyaanText.text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
                 buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.FiqihSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
@@ -87,6 +134,7 @@ public class SoalManager : MonoBehaviour
             }
             else
             {
+                jawabanSalahPanel.SetActive(true);
                 animator.SetTrigger("jawabanSalahShow");
                 currentNyawa = PlayerPrefsManager.instance.GetNyawa();
                 if (currentNyawa > 0)
@@ -99,12 +147,14 @@ public class SoalManager : MonoBehaviour
                     // game over
                     // reset soal
                     PlayerPrefsManager.instance.SetNyawa(10);
+                    
                     // dont reset soal if pernah tamat level tsb
                     if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < lengthSoal)
                     {
                         PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
                     }
-                    StartCoroutine(HideSoalShowLevelCoroutine());
+                    
+                    StartCoroutine(HideSoalShowLeveGameOverlCoroutine());
                 }
             }
         }
@@ -126,6 +176,7 @@ public class SoalManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         animator.SetTrigger("jawabanBenarHide");
         yield return new WaitForSeconds(0.25f);
+        jawabanBenarPanel.SetActive(false);
         animator.SetTrigger("soalShow");
         // Update the UI
     }
@@ -135,9 +186,10 @@ public class SoalManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         animator.SetTrigger("jawabanSalahHide");
         yield return new WaitForSeconds(0.25f);
+        jawabanSalahPanel.SetActive(false);
         animator.SetTrigger("soalShow");
     }
-    IEnumerator HideSoalShowLevelCoroutine()
+    IEnumerator HideSoalShowLeveGameOverlCoroutine()
     {
         yield return new WaitForSeconds(1);
         animator.SetTrigger("jawabanSalahHide");
@@ -145,6 +197,14 @@ public class SoalManager : MonoBehaviour
         animator.SetTrigger("gameOverShow");
         yield return new WaitForSeconds(1);
         animator.SetTrigger("gameOverHide");
+        yield return new WaitForSeconds(0.25f);
+        animator.SetTrigger("levelShow");
+    }
+
+    IEnumerator HideSoalShowLevelCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        animator.SetTrigger("soalHide");
         yield return new WaitForSeconds(0.25f);
         animator.SetTrigger("levelShow");
     }

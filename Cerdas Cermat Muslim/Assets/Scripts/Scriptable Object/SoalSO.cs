@@ -7,7 +7,7 @@ public class Soal
     [Header("Media Soal")]
     public AudioClip soalAudio;   // Input audio soal
     public VideoClip soalVideo;   // Input video soal
-    public Sprite soalImage;      // Gambar soal (opsional)
+    public Sprite soalImage;      // Gambar soal
 
     [Header("Pertanyaan")]
     [TextArea(3, 10)]

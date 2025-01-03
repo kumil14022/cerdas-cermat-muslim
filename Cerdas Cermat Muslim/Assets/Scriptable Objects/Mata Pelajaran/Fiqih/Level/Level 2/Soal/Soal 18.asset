@@ -15,17 +15,13 @@ MonoBehaviour:
   soal:
     soalAudio: {fileID: 0}
     soalVideo: {fileID: 0}
-    soalImage: {fileID: 21300000, guid: 4bb273ec49f323740bc8edbe5af93d16, type: 3}
-    soalText: "Sumber : Modul KMA\r\nlafadz yang cocok untuk gambar diatas adalah?\r"
+    soalImage: {fileID: 0}
+    soalText: Apa yang membedakan tahiyat awal dan tahiyat akhir?
     pilihan:
-    - "\u0633\u064F\u0628\u0652\u062D\u064E\u0627\u0646\u064E \u0631\u064E\u0628\u0651\u0650\u0649\u064E
-      \u0627\u0644\u0652\u0639\u064E\u0638\u0650\u064A\u0645\u0650"
-    - "\u0633\u064E\u0645\u0650\u0639\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064F
-      \u0644\u0650\u0645\u064E\u0646\u0652 \u062D\u064E\u0645\u0650\u062F\u064E\u0647\u064F"
-    - "\u0633\u064F\u0628\u0652\u062D\u064E\u0627\u0646\u064E \u0631\u064E\u0628\u0651\u0650\u0649\u064E
-      \u0627\u0644\u0652\u0623\u064E\u0639\u0652\u0644\u064E\u0649 \u0648\u064E\u0628\u0650\u062D\u064E\u0645\u0652\u062F\u0650\u0647\u0650"
-    - "\u0631\u064E\u0628\u0651\u0650 \u0627\u063A\u0652\u0641\u0650\u0631\u0652
-      \u0644\u0650\u0649 \u0648\u064E\u0627\u0631\u0652\u062D\u064E\u0645\u0652\u0646\u0650\u0649
-      \u0648\u064E\u0627\u062C\u0652\u0628\u064F\u0631\u0652\u0646\u0650\u0649 \u0648\u064E\u0627\u0631\u0652\u0632\u064F\u0642\u0652\u0646\u0650\u0649
-      \u0648\u064E\u0627\u0631\u0652\u0641\u064E\u0639\u0652\u0646\u0650\u0649"
-    jawabanBenarIndex: 3
+    - Tahiyat awal dilakukan setelah rakaat kedua, sedangkan tahiyat akhir dilakukan
+      setelah rakaat terakhir
+    - Tahiyat awal dibaca dengan suara keras, sedangkan tahiyat akhir dibaca pelan
+    - Tahiyat awal hanya dilakukan dalam shalat sunnah, sedangkan tahiyat akhir hanya
+      dalam shalat wajib
+    - Tahiyat awal dan tahiyat akhir mengandung salam
+    jawabanBenarIndex: 0

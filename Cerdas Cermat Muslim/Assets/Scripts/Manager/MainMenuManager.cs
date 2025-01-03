@@ -13,6 +13,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private Button buttonStartGame;
     [SerializeField]
+    private Button buttonSettingsGame;
+    [SerializeField]
+    private Button buttonQuitGame;
+    [SerializeField]
     private Button buttonHomeMataPelajaran;
     [SerializeField]
     private Button buttonHomeLevel;
@@ -56,6 +60,8 @@ public class MainMenuManager : MonoBehaviour
         buttonNickname.onClick.AddListener(OnClickButtonNicknameShow);
         buttonCloseNickname.onClick.AddListener(OnClickButtonNicknameHide);
         buttonStartGame.onClick.AddListener(OnClickButtonStartGame);
+        buttonSettingsGame.onClick.AddListener(OnClickButtonSettingsGame);
+        buttonQuitGame.onClick.AddListener(OnClickButtonQuitGame);
         buttonHomeMataPelajaran.onClick.AddListener(OnClickButtonHomeMataPelajaran);
         buttonHomeLevel.onClick.AddListener(OnClickButtonHomeLevel);
         buttonHomeSoal.onClick.AddListener(OnClickButtonHomeSoal);
@@ -97,6 +103,16 @@ public class MainMenuManager : MonoBehaviour
     private void OnClickButtonStartGame()
     {
         StartCoroutine(StartGameCoroutine());
+    }
+
+    private void OnClickButtonSettingsGame()
+    {
+
+    }
+
+    private void OnClickButtonQuitGame()
+    {
+        animator.SetTrigger("quitGamePanelShow");
     }
 
     private void OnClickButtonHomeMataPelajaran()
