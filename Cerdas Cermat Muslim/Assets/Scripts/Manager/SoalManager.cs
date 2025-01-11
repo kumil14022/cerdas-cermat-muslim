@@ -61,7 +61,6 @@ public class SoalManager : MonoBehaviour
             {
                 jawabanBenarPanel.SetActive(true);
                 animator.SetTrigger("jawabanBenarShow");
-                StartCoroutine(HideJawabanBenarCoroutine());
 
                 nextSoalIndex = soalIndex + 1;
                 // contoh get = 1, next = 2 set = 2
@@ -75,15 +74,23 @@ public class SoalManager : MonoBehaviour
                 {
                     levelIndex++;
                     PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
-
+                    
                     // jika level terakhir
                     if (levelIndex >= levelManager.lengthLevel)
                     {
                         StartCoroutine(HideSoalShowLevelCoroutine());
+                    } 
+                    else
+                    {
+                        StartCoroutine(HideJawabanBenarCoroutine());
                     }
                 }
+                else
+                {
+                    StartCoroutine(HideJawabanBenarCoroutine());
+                }
 
-                soalIndex = PlayerPrefsManager.instance.GetSoal(mapel, levelIndex);
+                soalIndex++;
 
                 levelText.text = $"Level {levelIndex}";
                 numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
@@ -178,7 +185,6 @@ public class SoalManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         jawabanBenarPanel.SetActive(false);
         animator.SetTrigger("soalShow");
-        // Update the UI
     }
 
     IEnumerator HideJawabanSalahCoroutine()
@@ -204,8 +210,6 @@ public class SoalManager : MonoBehaviour
     IEnumerator HideSoalShowLevelCoroutine()
     {
         yield return new WaitForSeconds(1);
-        animator.SetTrigger("soalHide");
-        yield return new WaitForSeconds(0.25f);
         animator.SetTrigger("levelShow");
     }
 }
