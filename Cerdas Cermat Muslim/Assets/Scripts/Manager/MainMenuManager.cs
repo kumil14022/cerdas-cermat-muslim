@@ -34,8 +34,7 @@ public class MainMenuManager : MonoBehaviour
     private Button buttonQuitGameOk;
     [SerializeField]
     private Button buttonQuitGameBatal;
-
-
+    
     [SerializeField]
     private TextMeshProUGUI textNickname;
     [SerializeField]

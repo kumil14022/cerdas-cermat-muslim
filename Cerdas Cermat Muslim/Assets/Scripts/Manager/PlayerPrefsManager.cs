@@ -52,5 +52,14 @@ public class PlayerPrefsManager : MonoBehaviour
         return PlayerPrefs.GetInt(mapel + "_Level_" + level + "_Soal", 0);
     }
 
-    
+    public void SetBacksound(int boolean)
+    {
+        PlayerPrefs.SetInt("backsound", boolean);
+    }
+
+    public int GetBacksound()
+    {
+        return PlayerPrefs.GetInt("backsound", 1);
+    }
+
 }
