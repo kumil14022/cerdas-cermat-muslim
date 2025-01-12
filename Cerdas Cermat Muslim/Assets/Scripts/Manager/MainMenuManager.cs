@@ -15,6 +15,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private Button buttonSettingsGame;
     [SerializeField]
+    private Button buttonCloseSettingsGame;
+    [SerializeField]
+    private Button buttonResetGame;
+    [SerializeField]
     private Button buttonQuitGame;
     [SerializeField]
     private Button buttonHomeMataPelajaran;
@@ -23,9 +27,14 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private Button buttonHomeSoal;
     [SerializeField]
+    private Button buttonResetGameOk;
+    [SerializeField]
+    private Button buttonResetGameBatal;
+    [SerializeField]
     private Button buttonQuitGameOk;
     [SerializeField]
     private Button buttonQuitGameBatal;
+
 
     [SerializeField]
     private TextMeshProUGUI textNickname;
@@ -61,10 +70,14 @@ public class MainMenuManager : MonoBehaviour
         buttonCloseNickname.onClick.AddListener(OnClickButtonNicknameHide);
         buttonStartGame.onClick.AddListener(OnClickButtonStartGame);
         buttonSettingsGame.onClick.AddListener(OnClickButtonSettingsGame);
+        buttonCloseSettingsGame.onClick.AddListener(OnClickButtonCloseSettingsGame);
+        buttonResetGame.onClick.AddListener(OnClickButtonResetGame);
         buttonQuitGame.onClick.AddListener(OnClickButtonQuitGame);
         buttonHomeMataPelajaran.onClick.AddListener(OnClickButtonHomeMataPelajaran);
         buttonHomeLevel.onClick.AddListener(OnClickButtonHomeLevel);
         buttonHomeSoal.onClick.AddListener(OnClickButtonHomeSoal);
+        buttonResetGameOk.onClick.AddListener(OnClickButtonResetGameOk);
+        buttonResetGameBatal.onClick.AddListener(OnClickButtonResetGameBatal);
         buttonQuitGameOk.onClick.AddListener(OnClickButtonQuitGameOk);
         buttonQuitGameBatal.onClick.AddListener(OnClickButtonQuitGameBatal);
     }
@@ -107,7 +120,17 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnClickButtonSettingsGame()
     {
+        animator.SetTrigger("settingsShow");
+    }
 
+    private void OnClickButtonCloseSettingsGame()
+    {
+        animator.SetTrigger("settingsHide");
+    }
+
+    private void OnClickButtonResetGame()
+    {
+        animator.SetTrigger("confirmResetShow");
     }
 
     private void OnClickButtonQuitGame()
@@ -133,6 +156,17 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(HomeSoalCoroutine());
     }
 
+    private void OnClickButtonResetGameOk()
+    {
+        PlayerPrefs.DeleteAll();
+        animator.SetTrigger("confirmResetHide");
+    }
+
+    private void OnClickButtonResetGameBatal()
+    {
+        animator.SetTrigger("confirmResetHide");
+    }
+
     private void OnClickButtonQuitGameOk()
     {
         Application.Quit();
@@ -149,7 +183,7 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("mataPelajaranShow");
         subMenu.Play();
-    } 
+    }
 
     private IEnumerator HomeMataPelajaranCoroutine()
     {
