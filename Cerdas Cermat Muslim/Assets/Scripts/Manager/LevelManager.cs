@@ -1,8 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Device;
-using UnityEngine.Video;
 
 public class LevelManager : MonoBehaviour
 {
@@ -243,15 +241,38 @@ public class LevelManager : MonoBehaviour
         }
         else if (mapel == "Al-Qur'an Hadist")
         {
-            if (AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+            if (AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo != null)
             {
+                soalManager.backgroundMusic.Pause();
+                soalManager.screen.gameObject.SetActive(true);
+                soalManager.videoPlayer.gameObject.SetActive(true);
+                soalManager.screen.texture = soalManager.videoSoalTexture;
+                soalManager.videoPlayer.clip = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo;
+            }
+            else if (AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+            {
+                if (soalManager.backgroundMusic.isPlaying == false)
+                {
+                    soalManager.backgroundMusic.Play();
+                }
+
                 soalManager.screen.gameObject.SetActive(true);
                 soalManager.screen.texture = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage.texture;
                 soalManager.screen.SetNativeSize();
             }
+            else if (AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio != null)
+            {
+                soalManager.backgroundMusic.Pause();
+                soalManager.audioSoal.gameObject.SetActive(true);
+                soalManager.audioSoal.clip = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio;
+                soalManager.audioSoal.Play();
+            }
             else
             {
-                soalManager.screen.gameObject.SetActive(false);
+                if (soalManager.backgroundMusic.isPlaying == false)
+                {
+                    soalManager.backgroundMusic.Play();
+                }
             }
 
             soalManager.pertanyaanText.text = AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
@@ -262,15 +283,38 @@ public class LevelManager : MonoBehaviour
         }
         else if (mapel == "Akidah Akhlak")
         {
-            if (AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+            if (AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo != null)
             {
+                soalManager.backgroundMusic.Pause();
+                soalManager.screen.gameObject.SetActive(true);
+                soalManager.videoPlayer.gameObject.SetActive(true);
+                soalManager.screen.texture = soalManager.videoSoalTexture;
+                soalManager.videoPlayer.clip = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo;
+            }
+            else if (AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+            {
+                if (soalManager.backgroundMusic.isPlaying == false)
+                {
+                    soalManager.backgroundMusic.Play();
+                }
+
                 soalManager.screen.gameObject.SetActive(true);
                 soalManager.screen.texture = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage.texture;
                 soalManager.screen.SetNativeSize();
             }
+            else if (AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio != null)
+            {
+                soalManager.backgroundMusic.Pause();
+                soalManager.audioSoal.gameObject.SetActive(true);
+                soalManager.audioSoal.clip = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio;
+                soalManager.audioSoal.Play();
+            }
             else
             {
-                soalManager.screen.gameObject.SetActive(false);
+                if (soalManager.backgroundMusic.isPlaying == false)
+                {
+                    soalManager.backgroundMusic.Play();
+                }
             }
 
             soalManager.pertanyaanText.text = AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
@@ -281,15 +325,38 @@ public class LevelManager : MonoBehaviour
         }
         else if (mapel == "Sejarah Kebudayaan Islam")
         {
-            if (SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+            if (SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo != null)
             {
+                soalManager.backgroundMusic.Pause();
+                soalManager.screen.gameObject.SetActive(true);
+                soalManager.videoPlayer.gameObject.SetActive(true);
+                soalManager.screen.texture = soalManager.videoSoalTexture;
+                soalManager.videoPlayer.clip = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo;
+            }
+            else if (SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+            {
+                if (soalManager.backgroundMusic.isPlaying == false)
+                {
+                    soalManager.backgroundMusic.Play();
+                }
+
                 soalManager.screen.gameObject.SetActive(true);
                 soalManager.screen.texture = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage.texture;
                 soalManager.screen.SetNativeSize();
             }
+            else if (SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio != null)
+            {
+                soalManager.backgroundMusic.Pause();
+                soalManager.audioSoal.gameObject.SetActive(true);
+                soalManager.audioSoal.clip = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio;
+                soalManager.audioSoal.Play();
+            }
             else
             {
-                soalManager.screen.gameObject.SetActive(false);
+                if (soalManager.backgroundMusic.isPlaying == false)
+                {
+                    soalManager.backgroundMusic.Play();
+                }
             }
 
             soalManager.pertanyaanText.text = SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;

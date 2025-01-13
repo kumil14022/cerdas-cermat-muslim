@@ -74,9 +74,11 @@ public class SoalManager : MonoBehaviour
                 {
                     levelIndex++;
                     PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
-                    
+                    soalIndex = 0;
+
+
                     // jika level terakhir
-                    if (levelIndex >= levelManager.lengthLevel)
+                    if (levelIndex > levelManager.lengthLevel)
                     {
                         StartCoroutine(HideSoalShowLevelCoroutine());
                     } 
@@ -167,12 +169,339 @@ public class SoalManager : MonoBehaviour
         }
         else if (mapel == "Al-Qur'an Hadist")
         {
+            // jawaban benar
+            if (levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.jawabanBenarIndex == pilihan)
+            {
+                jawabanBenarPanel.SetActive(true);
+                animator.SetTrigger("jawabanBenarShow");
+
+                nextSoalIndex = soalIndex + 1;
+                // contoh get = 1, next = 2 set = 2
+                if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < nextSoalIndex)
+                {
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, nextSoalIndex);
+                }
+
+                // jika soal terakhir
+                if (nextSoalIndex > lengthSoal)
+                {
+                    levelIndex++;
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+                    soalIndex = 0;
+
+                    // jika level terakhir
+                    if (levelIndex > levelManager.lengthLevel)
+                    {
+                        StartCoroutine(HideSoalShowLevelCoroutine());
+                    }
+                    else
+                    {
+                        StartCoroutine(HideJawabanBenarCoroutine());
+                    }
+                }
+                else
+                {
+                    StartCoroutine(HideJawabanBenarCoroutine());
+                }
+
+                soalIndex++;
+
+                levelText.text = $"Level {levelIndex}";
+                numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
+
+                audioSoal.gameObject.SetActive(false);
+                screen.gameObject.SetActive(false);
+                videoPlayer.gameObject.SetActive(false);
+
+                if (levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo != null)
+                {
+                    backgroundMusic.Pause();
+                    screen.gameObject.SetActive(true);
+                    videoPlayer.gameObject.SetActive(true);
+                    screen.texture = videoSoalTexture;
+                    videoPlayer.clip = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo;
+                }
+                else if (levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+
+                    screen.gameObject.SetActive(true);
+                    screen.texture = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage.texture;
+                    screen.SetNativeSize();
+                }
+                else if (levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio != null)
+                {
+                    backgroundMusic.Pause();
+                    audioSoal.gameObject.SetActive(true);
+                    audioSoal.clip = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio;
+                    audioSoal.Play();
+                }
+                else
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+                }
+
+                pertanyaanText.text = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+                buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+                buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+                buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+                buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AlquranHadistSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
+            }
+            else
+            {
+                jawabanSalahPanel.SetActive(true);
+                animator.SetTrigger("jawabanSalahShow");
+                currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                if (currentNyawa > 0)
+                {
+                    PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);
+                    StartCoroutine(HideJawabanSalahCoroutine());
+                }
+                else
+                {
+                    // game over
+                    // reset soal
+                    PlayerPrefsManager.instance.SetNyawa(10);
+
+                    // dont reset soal if pernah tamat level tsb
+                    if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < lengthSoal)
+                    {
+                        PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+                    }
+
+                    StartCoroutine(HideSoalShowLeveGameOverlCoroutine());
+                }
+            }
         }
         else if (mapel == "Akidah Akhlak")
         {
+            // jawaban benar
+            if (levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.jawabanBenarIndex == pilihan)
+            {
+                jawabanBenarPanel.SetActive(true);
+                animator.SetTrigger("jawabanBenarShow");
+
+                nextSoalIndex = soalIndex + 1;
+                // contoh get = 1, next = 2 set = 2
+                if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < nextSoalIndex)
+                {
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, nextSoalIndex);
+                }
+
+                // jika soal terakhir
+                if (nextSoalIndex > lengthSoal)
+                {
+                    levelIndex++;
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+                    soalIndex = 0;
+
+                    // jika level terakhir
+                    if (levelIndex > levelManager.lengthLevel)
+                    {
+                        StartCoroutine(HideSoalShowLevelCoroutine());
+                    }
+                    else
+                    {
+                        StartCoroutine(HideJawabanBenarCoroutine());
+                    }
+                }
+                else
+                {
+                    StartCoroutine(HideJawabanBenarCoroutine());
+                }
+
+                soalIndex++;
+
+                levelText.text = $"Level {levelIndex}";
+                numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
+
+                audioSoal.gameObject.SetActive(false);
+                screen.gameObject.SetActive(false);
+                videoPlayer.gameObject.SetActive(false);
+
+                if (levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo != null)
+                {
+                    backgroundMusic.Pause();
+                    screen.gameObject.SetActive(true);
+                    videoPlayer.gameObject.SetActive(true);
+                    screen.texture = videoSoalTexture;
+                    videoPlayer.clip = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo;
+                }
+                else if (levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+
+                    screen.gameObject.SetActive(true);
+                    screen.texture = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage.texture;
+                    screen.SetNativeSize();
+                }
+                else if (levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio != null)
+                {
+                    backgroundMusic.Pause();
+                    audioSoal.gameObject.SetActive(true);
+                    audioSoal.clip = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio;
+                    audioSoal.Play();
+                }
+                else
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+                }
+
+                pertanyaanText.text = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+                buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+                buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+                buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+                buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.AkidahAkhlakSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
+            }
+            else
+            {
+                jawabanSalahPanel.SetActive(true);
+                animator.SetTrigger("jawabanSalahShow");
+                currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                if (currentNyawa > 0)
+                {
+                    PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);
+                    StartCoroutine(HideJawabanSalahCoroutine());
+                }
+                else
+                {
+                    // game over
+                    // reset soal
+                    PlayerPrefsManager.instance.SetNyawa(10);
+
+                    // dont reset soal if pernah tamat level tsb
+                    if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < lengthSoal)
+                    {
+                        PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+                    }
+
+                    StartCoroutine(HideSoalShowLeveGameOverlCoroutine());
+                }
+            }
         }
         else if (mapel == "Sejarah Kebudayaan Islam")
         {
+            // jawaban benar
+            if (levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.jawabanBenarIndex == pilihan)
+            {
+                jawabanBenarPanel.SetActive(true);
+                animator.SetTrigger("jawabanBenarShow");
+
+                nextSoalIndex = soalIndex + 1;
+                // contoh get = 1, next = 2 set = 2
+                if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < nextSoalIndex)
+                {
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, nextSoalIndex);
+                }
+
+                // jika soal terakhir
+                if (nextSoalIndex > lengthSoal)
+                {
+                    levelIndex++;
+                    PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+                    soalIndex = 0;
+
+                    // jika level terakhir
+                    if (levelIndex > levelManager.lengthLevel)
+                    {
+                        StartCoroutine(HideSoalShowLevelCoroutine());
+                    }
+                    else
+                    {
+                        StartCoroutine(HideJawabanBenarCoroutine());
+                    }
+                }
+                else
+                {
+                    StartCoroutine(HideJawabanBenarCoroutine());
+                }
+
+                soalIndex++;
+
+                levelText.text = $"Level {levelIndex}";
+                numberSoalText.text = $"Soal ke {soalIndex} dari {lengthSoal}";
+
+                audioSoal.gameObject.SetActive(false);
+                screen.gameObject.SetActive(false);
+                videoPlayer.gameObject.SetActive(false);
+
+                if (levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo != null)
+                {
+                    backgroundMusic.Pause();
+                    screen.gameObject.SetActive(true);
+                    videoPlayer.gameObject.SetActive(true);
+                    screen.texture = videoSoalTexture;
+                    videoPlayer.clip = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalVideo;
+                }
+                else if (levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage != null)
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+
+                    screen.gameObject.SetActive(true);
+                    screen.texture = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalImage.texture;
+                    screen.SetNativeSize();
+                }
+                else if (levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio != null)
+                {
+                    backgroundMusic.Pause();
+                    audioSoal.gameObject.SetActive(true);
+                    audioSoal.clip = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalAudio;
+                    audioSoal.Play();
+                }
+                else
+                {
+                    if (backgroundMusic.isPlaying == false)
+                    {
+                        backgroundMusic.Play();
+                    }
+                }
+
+                pertanyaanText.text = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.soalText;
+                buttonPilihanA.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[0];
+                buttonPilihanB.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[1];
+                buttonPilihanC.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[2];
+                buttonPilihanD.GetComponentInChildren<TextMeshProUGUI>().text = levelManager.SejarahKebudayaanIslamSO.levels[levelIndex - 1].soals[soalIndex - 1].soal.pilihan[3];
+            }
+            else
+            {
+                jawabanSalahPanel.SetActive(true);
+                animator.SetTrigger("jawabanSalahShow");
+                currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                if (currentNyawa > 0)
+                {
+                    PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);
+                    StartCoroutine(HideJawabanSalahCoroutine());
+                }
+                else
+                {
+                    // game over
+                    // reset soal
+                    PlayerPrefsManager.instance.SetNyawa(10);
+
+                    // dont reset soal if pernah tamat level tsb
+                    if (PlayerPrefsManager.instance.GetSoal(mapel, levelIndex) < lengthSoal)
+                    {
+                        PlayerPrefsManager.instance.SetSoal(mapel, levelIndex, 1);
+                    }
+
+                    StartCoroutine(HideSoalShowLeveGameOverlCoroutine());
+                }
+            }
         }
 
         levelManager.UpdateLevelUI();
@@ -210,6 +539,6 @@ public class SoalManager : MonoBehaviour
     IEnumerator HideSoalShowLevelCoroutine()
     {
         yield return new WaitForSeconds(1);
-        animator.SetTrigger("levelShow");
+        animator.SetTrigger("mataPelajaranShow");
     }
 }

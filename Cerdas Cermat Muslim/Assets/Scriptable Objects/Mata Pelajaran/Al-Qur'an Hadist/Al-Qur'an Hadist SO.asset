@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Al-Qur'an Hadist SO
   m_EditorClassIdentifier: 
   namaMataPelajaran: Al-Qur'an Hadist
-  levels: []
+  levels:
+  - {fileID: 11400000, guid: d60c9259951c13e46955154a23a322e7, type: 2}
+  - {fileID: 11400000, guid: 2bbf0d7dd3f32cc478782100b0a71aaf, type: 2}

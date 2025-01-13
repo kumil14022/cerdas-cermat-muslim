@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ece39b3f490744429eda235184bdbbe, type: 3}
+  m_Name: Soal 10
+  m_EditorClassIdentifier: 
+  soal:
+    soalAudio: {fileID: 0}
+    soalVideo: {fileID: 0}
+    soalImage: {fileID: 21300000, guid: a2aa00c5e64663d4395a348f902060de, type: 3}
+    soalText: Arti potongan ayat tersebut adalah?
+    pilihan:
+    - Sesungguhnya manusia benar-benar berada dalam kerugian
+    - Saleh serta saling menasihati untuk kebenaran dan kesabaran
+    - Kecuali orang-orang yang beriman dan beramal saleh serta saling menasihati
+      untuk kebenaran dan kesabaran
+    - Demi waktu
+    jawabanBenarIndex: 0
