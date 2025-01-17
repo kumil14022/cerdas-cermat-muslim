@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Sejarah Kebudayaan Islam SO
   m_EditorClassIdentifier: 
   namaMataPelajaran: Sejarah Kebudayaan Islam
-  levels: []
+  levels:
+  - {fileID: 11400000, guid: 2a9a897e6065ada4b80a1f448eb96d41, type: 2}
+  - {fileID: 11400000, guid: 26ebf3bfb585260418606d2fecfa0f9a, type: 2}
