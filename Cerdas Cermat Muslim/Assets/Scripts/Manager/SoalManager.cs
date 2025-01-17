@@ -37,6 +37,9 @@ public class SoalManager : MonoBehaviour
     private LevelManager levelManager;
 
     [SerializeField]
+    InterstitialAds interstitialAds;
+
+    [SerializeField]
     private Animator animator;
 
     private int currentNyawa = 0;
@@ -146,6 +149,7 @@ public class SoalManager : MonoBehaviour
                 jawabanSalahPanel.SetActive(true);
                 animator.SetTrigger("jawabanSalahShow");
                 currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                interstitialAds.ShowInterstitialAd();
                 if (currentNyawa > 0)
                 {
                     PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);
@@ -258,6 +262,7 @@ public class SoalManager : MonoBehaviour
                 jawabanSalahPanel.SetActive(true);
                 animator.SetTrigger("jawabanSalahShow");
                 currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                interstitialAds.ShowInterstitialAd();
                 if (currentNyawa > 0)
                 {
                     PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);
@@ -370,6 +375,7 @@ public class SoalManager : MonoBehaviour
                 jawabanSalahPanel.SetActive(true);
                 animator.SetTrigger("jawabanSalahShow");
                 currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                interstitialAds.ShowInterstitialAd();
                 if (currentNyawa > 0)
                 {
                     PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);
@@ -482,6 +488,7 @@ public class SoalManager : MonoBehaviour
                 jawabanSalahPanel.SetActive(true);
                 animator.SetTrigger("jawabanSalahShow");
                 currentNyawa = PlayerPrefsManager.instance.GetNyawa();
+                interstitialAds.ShowInterstitialAd();
                 if (currentNyawa > 0)
                 {
                     PlayerPrefsManager.instance.SetNyawa(currentNyawa - 1);

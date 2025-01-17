@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using GoogleMobileAds.Api;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -54,6 +54,9 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField]
     private LevelManager levelManager;
+
+    [SerializeField]
+    InterstitialAds interstitialAds;
 
     // Start is called before the first frame update
     void Start()
@@ -114,11 +117,13 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnClickButtonStartGame()
     {
+        interstitialAds.ShowInterstitialAd();
         StartCoroutine(StartGameCoroutine());
     }
 
     private void OnClickButtonSettingsGame()
     {
+        interstitialAds.ShowInterstitialAd();
         animator.SetTrigger("settingsShow");
     }
 
@@ -129,11 +134,13 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnClickButtonResetGame()
     {
+        interstitialAds.ShowInterstitialAd();
         animator.SetTrigger("confirmResetShow");
     }
 
     private void OnClickButtonQuitGame()
     {
+        interstitialAds.ShowInterstitialAd();
         animator.SetTrigger("quitGamePanelShow");
     }
 
