@@ -16,6 +16,10 @@ public class Soal
     [Header("Pilihan Jawaban")]
     public string[] pilihan = new string[4]; // Empat pilihan jawaban
     public int jawabanBenarIndex;            // Index jawaban benar (0-3)
+
+    [Header("Sumber Referensi")]
+    [TextArea(3, 10)]
+    public string sumber;
 }
 
 [CreateAssetMenu(fileName = "Soal Baru", menuName = "ScriptableObjects/Soal", order = 2)]

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using GoogleMobileAds.Api;
+//using GoogleMobileAds.Api;
 
 public class MainMenuManager : MonoBehaviour
 {

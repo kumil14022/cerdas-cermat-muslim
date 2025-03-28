@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Soal 3
   m_EditorClassIdentifier: 
   soal:
+    soalAudio: {fileID: 0}
+    soalVideo: {fileID: 0}
+    soalImage: {fileID: 0}
     soalText: Persaksian bahwa tiada tuhan selain ALLAH SWT disebut Syahadat?
     pilihan:
     - Tauhid
@@ -20,3 +23,7 @@ MonoBehaviour:
     - Nabi
     - Malaikat
     jawabanBenarIndex: 0
+    sumber: "Sumber : Syahadat Rasul (\u0648\u064E\u0623\u064E\u0646\u0651\u064E
+      \u0645\u064F\u062D\u064E\u0645\u0651\u064E\u062F\u064B\u0627 \u0631\u064E\u0633\u064F\u0648\u0644\u064F
+      \u0627\u0644\u0644\u0651\u064E\u0647\u0650) Adalah Pengakuan Bahwa Nabi Muhammad
+      \uFDFA Adalah Utusan Allah."

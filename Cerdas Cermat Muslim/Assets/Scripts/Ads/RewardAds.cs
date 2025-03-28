@@ -1,4 +1,3 @@
-using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using System;
 using UnityEngine;
@@ -70,7 +69,7 @@ public class RewardAds : MonoBehaviour
             {
                 // TODO: Reward the user.
                 Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
-                PlayerPrefsManager.instance.SetNyawa(PlayerPrefsManager.instance.GetNyawa()+3);
+                PlayerPrefsManager.instance.SetNyawa(PlayerPrefsManager.instance.GetNyawa() + 3);
             });
         }
     }

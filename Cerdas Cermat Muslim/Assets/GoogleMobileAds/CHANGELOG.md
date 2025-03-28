@@ -1,6 +1,43 @@
 Google Mobile Ads Unity Plugin Change Log
 
 **************
+Version 10.0.0
+**************
+- Updated the GMA Android SDK dependency version to 24.1.0.
+- Updated the GMA iOS SDK dependency version to 12.2.0.
+- Removed deprecated `AdFailedToLoadEventArgs` class. Use `LoadAdError` directly.
+- Removed deprecated `AdValueEventArgs` class. Use `AdValue` directly.
+- Changed the default behavior to True for OPTIMIZE_INITIALIZATION and
+OPTIMIZE_AD_LOADING flags to align with GMA Android 24.0.0.
+- Replaced `Optimize Ad Loading` and `Optimize Initialization` with
+`Disable ad loading optimization` and `Disable initialization optimzation`
+- Removed "Remove property tag from GMA Android SDK" feature from Google Mobile
+Ads Editor Settings as this tag has been removed from GMA Android SDK v.24.0.0.
+- Removed Preloading APIs for iOS as part of upgrade to newer to newer APIs.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 24.1.0.
+- Google Mobile Ads iOS SDK 12.2.0.
+- Google User Messaging Platform Android SDK 3.1.0
+- Google User Messaging Platform iOS SDK 2.7.0
+- External Dependency Manager for Unity 1.2.185
+
+**************
+Version 9.6.0
+**************
+- Added ability to return correct native template view size on Android.
+- Fixed issue with Native Overlay Icon not being clickable.
+- Added `GetVersion` API to MobileAds class to be able to fetch the GMA Unity SDK Version.
+- Fire `OnUserEarnedReward` once the ad counter expires when showing Rewarded ads in Unity Editor.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 23.6.0
+- Google Mobile Ads iOS SDK 11.13.0
+- Google User Messaging Platform Android SDK 3.1.0
+- Google User Messaging Platform iOS SDK 2.7.0
+- External Dependency Manager for Unity 1.2.185
+
+**************
 Version 9.5.0
 **************
 - Added `CustomTargeting` field to AdRequest.
