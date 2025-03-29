@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.Video;
-using System;
-using UnityEditor.EditorTools;
 
 public class SoalManager : MonoBehaviour
 {
